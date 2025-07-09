@@ -1,0 +1,23 @@
+{
+  "name": "primeiros-passos-cypress",
+  "version": "1.0.0",
+  "main": "login.spec.cy.js",
+  "devDependencies": {
+    "cypress": "^14.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guardiao-da-Qualidade/primeiros-passos-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guardiao-da-Qualidade/primeiros-passos-cypress/issues"
+  },
+  "homepage": "https://github.com/Guardiao-da-Qualidade/primeiros-passos-cypress#readme",
+  "description": ""
+}
