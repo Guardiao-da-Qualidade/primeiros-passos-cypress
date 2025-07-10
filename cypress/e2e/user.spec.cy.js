@@ -1,4 +1,4 @@
-// login sucesso
+// login sucesso 1
 
 import userData from '../fixtures/user-data.json'
 
@@ -17,9 +17,12 @@ describe('Orange HRM Tests', () => {
      lastNameField: "[name='lastName']",
      genericField: ".oxd-input--active",
      dateField: "[placeholder='yyyy-dd-mm']",
+     genericCombobox: ".oxd-select-text--arrow",
      dateCloseButton: ".--close",
-     submitButton: "[type='submit']"
-  }
+     submitButton: ".orangehrm-left-space",
+
+    
+    }
 
   it.only('User Info Update - Success', () => {
 
@@ -33,16 +36,22 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorsList.firstNameField).clear().type('FirstNameTest')
     cy.get(selectorsList.middleNameField).clear().type('MiddleNameTest')
     cy.get(selectorsList.lastNameField).clear().type('LastNameTest')
-    cy.get(selectorsList.genericField).eq(3).clear().type('EmplTest')
+    cy.get(selectorsList.genericField).eq(3).clear().type('Employee')
     cy.get(selectorsList.genericField).eq(4).clear().type('OtherIdTest')
     cy.get(selectorsList.genericField).eq(5).clear().type('DriversLicenceNumberTest')
     cy.get(selectorsList.dateField).eq(0).clear().type('2025-10-07')
     cy.get(selectorsList.dateCloseButton).click()
     cy.get(selectorsList.dateField).eq(1).clear().type('2030-10-07')
     cy.get(selectorsList.dateCloseButton).click()
-    cy.get(selectorsList.submitButton).eq(0).click()
+    cy.get(selectorsList.submitButton).eq(0).click({force: true})
     cy.get('body').should('contain', 'Successfully Updated')
     cy.get('.oxd-toast-close')
+
+    cy.get(selectorsList.genericCombobox).eq(0).click({force: true})
+    cy.get('.oxd-select-dropdown > :nth-child(3)').click()
+    cy.get(selectorsList.genericCombobox).eq(1).click({force: true})
+    cy.get('.oxd-select-dropdown > :nth-child(2)').click()
+
   })
 
 it('Login - Fail', () => {
@@ -53,3 +62,4 @@ it('Login - Fail', () => {
     cy.get(selectorsList.wrongCredentialAlert)
   })
 })
+
