@@ -1,16 +1,17 @@
 // login sucesso 1
 
 import userData from '../fixtures/user-data.json'
-
-import LoginPage from '../pages/loginPage.js'
+import LoginPage from '../pages/loginPage'
+import DashboardPage from '../pages/dashboardPage'
+import MenuPage from '../pages/menuPage'
 
 const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage()
+const menuPage = new MenuPage()
 
 describe('Orange HRM Tests', () => {
 
   const selectorsList = {
-     sectionTitleTopBar: ".oxd-topbar-header-breadcrumb-module",
-     dashboardGrid: ".orangehrm-dashboard-grid",
      myInfoButton: '[href="/web/index.php/pim/viewMyDetails"]',
      firstNameField: "[name='firstName']",
      middleNameField: "[name='middleName']",
@@ -27,10 +28,12 @@ describe('Orange HRM Tests', () => {
 
    it.only('User Info Update - Success', () => {
     loginPage.accessLoginPage()
-    loginPage.loginWithUser(userData.userSuccess.username, userData.userSuccess.password)
-    
-   cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorsList.dashboardGrid)
+    loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
+
+    dashboardPage.checkDashboardPage
+
+    menuPage.acessMyInfo
+
     cy.get(selectorsList.myInfoButton).click()
     cy.get(selectorsList.firstNameField).clear().type('FirstNameTest')
     cy.get(selectorsList.middleNameField).clear().type('MiddleNameTest')
