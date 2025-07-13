@@ -8,13 +8,14 @@ class MenuPage {
         return selectors
     }
 
-    acessMyInfo () {
+    accessMyInfo () {
         cy.get(this.selectorList().myInfoButton).click()
     }
 
-    acessPerformance () {
+    accessPerformance () {
         cy.get(this.selectorList().performanceButton).click()
     }
+   
 }
 
 export default MenuPage;
