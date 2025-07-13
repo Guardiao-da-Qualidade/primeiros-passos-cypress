@@ -16,7 +16,7 @@ it('Login - Fail', () => {
   
 it('Login - Success', () => {
     loginPage.accessLoginPage()
-    loginPage.loginWithAnyUser(userData.userSuccess.username, userData.user.password)
+    loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
     dashboardPage.checkDashboardPage()
 
 })
